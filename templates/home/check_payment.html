@@ -1,0 +1,44 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="col-sm-9 col-sm-offset-3">
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }} well">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.Registration_Number|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        {{ form.current_class|as_crispy_field }}
+      </div>
+    </div>
+   
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        {{ form.current_session|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-4 mb-0">
+        {{ form.current_term|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-2 mb-0">
+        {{ form.purpose|as_crispy_field }}
+      </div>
+    </div> <br>
+    
+    <p><button type="submit" class="btn btn-primary">Check</button></p>
+  </form>
+
+<p>Please check the <a href="{% url 'home:price' %}">price page </a> for more details about various price of the school. </p>
+  </div>
+</div>
+{% endblock %}

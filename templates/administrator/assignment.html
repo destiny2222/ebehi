@@ -1,0 +1,57 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+{% load crispy_forms_tags %}
+
+{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li class="{{ message.tags }} well">{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+<form action="" method="POST">{% csrf_token %}
+
+<table>
+  <tr>
+    <td> 
+
+
+
+     <select name='myclass' style="width: 150px;">
+<!--       <option> Select Class</option> -->
+      <option>kg1</option> 
+      <option>kg2</option> 
+      <option>kg3</option> 
+      <option>kg1</option> 
+      <option>pry1</option> 
+      <option>pry2</option> 
+      <option>pry3</option> 
+      <option>pry4</option> 
+      <option>pry5</option> 
+      <option>pry6</option> 
+      <option>jss1</option> 
+      <option>jss2</option> 
+      <option>jss3</option> 
+      <option>sss1</option> 
+      <option>sss2</option> 
+      <option>sss3</option>       
+    </select>
+
+
+
+
+
+     <select name='subject' style="width: 150px;">      
+      <option>Select a subject</option>
+      {% for i in subject %}
+        <option>{{i.subject_name}}</option>
+      {% endfor %}      
+      </select>
+     
+    </td>
+    <td><input type="submit" value="Go"></td>
+  </tr>
+</table>
+  
+</form>
+{% endblock %}

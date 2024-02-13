@@ -1,0 +1,641 @@
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<base href="/">
+
+<link type="text/css" rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="/css/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/selectFX/css/cs-skin-elastic.css">
+  <link rel="stylesheet" type="text/css" href="/css/jqvmap/dist/jqvmap.min.css">
+   <link rel="stylesheet" type="text/css" href="/css/css/style.css">
+<!-- <script src="bundle.js"></script> -->
+<style>
+  body {
+  padding: 2rem 1rem; 
+}
+
+.nav-tabs {
+  margin-bottom: 1rem;
+}
+
+</style>
+
+</head>
+<body id="body">
+
+
+
+
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">J.E.M.S</a>
+                <a class="navbar-brand hidden" href="#">J.E.M.S></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a id="homepage"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <i id="generallink">Link</i>
+                    </li>
+
+                    <li class="menu-item">
+                    <a href="#" class="" id="get_result" data-toggle="modal" data-target="#properties" > <i class="menu-icon fa fa-file"></i> Credits</a>  
+                    </li>
+
+                    
+
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <div class="dropdown for-message">
+     
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+<!--                             <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a> -->
+
+                            <a class="nav-link" href="#" id="logout" style="display: none;"><i class="fa fa-power-off"></i> Logout</a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1><span id="current_session"></span> ACADEMIC SESSION, <span id="current_term"></span></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active"><b>JASMINE EXCLUSIVE MONTESSORI SCHOOL (J.E.M.S)</b></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3">
+
+            <div class="col-sm-12">
+
+
+  <div class="jumbotron jumbotron-fluid" style="display: none;" id="jumbotron">
+  <div class="container-fluid">
+
+  <h4>J.A.M.S EXAMINATION</h4> 
+  <p>NAME: <b><span id="student_name"></span></b><br>
+  CLASS: <b><span id="student_class"></span></b><br>
+  SUBJECT: <b><span id="student_subject"></span></b><br>
+  QUESTION <b><span id="question_no">1</span> / <span id="end_question_no"></span> </b><br>
+  TIMER: <span style="color: red;"><span id="hours">1</span> hr: <span id="minutes">30 </span> mins: <span id="seconds">60</span> sec </span> <br></p>
+<!--   <button type="button" class="btn btn-danger">END EXAM</button><br>
+  <button type="button" class="btn btn-warning" id="cancel_exam">CANCEL</button><br> -->
+
+  <div class="btn-group">
+  <button type="button" class="btn btn-success" id="submit_exam">SUBMIT</button>
+  <button type="button" class="btn btn-info" id="cancel_exam" style="">CANCEL</button>
+
+</div>
+
+
+  
+  </div>
+  </div>
+
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+    
+
+    
+<div class="bd-example bd-example-tabs" style="display: none;" id="main_contents">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true"><span id="tab_subject"></span></a>
+    </li>
+
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <p id="question"></p>
+
+
+<div class="form-check">
+<label class="form-check-label">
+<input type="radio" class="form-check-input" name="optradio" id="optradioa" value="A"><span id="student_answer_alphabeta">A</span>. <span id="option_a"></span>
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+<input type="radio" class="form-check-input" name="optradio" id="optradiob" value="B"><span id="student_answer_alphabetb">B</span>. <span id="option_b"></span>
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+<input type="radio" class="form-check-input" name="optradio" id="optradioc" value="C"><span id="student_answer_alphabetc">C</span>. <span id="option_c"></span>
+</label>
+</div>
+<div class="form-check">
+<label class="form-check-label">
+<input type="radio" class="form-check-input" name="optradio" id="optradiod" value="D"><span id="student_answer_alphabetd" >D</span>. <span id="option_d"></span>
+</label>
+</div>
+
+
+
+    </div>
+
+
+
+
+
+  <div class="btn-group" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary quest1" style="display: none;">1</button>
+    <button type="button" class="btn btn-secondary quest2" style="display: none;">2</button>
+    <button type="button" class="btn btn-secondary quest3" style="display: none;">3</button>
+    <button type="button" class="btn btn-secondary quest4" style="display: none;">4</button>
+    <button type="button" class="btn btn-secondary quest5" style="display: none;">5</button>
+    <button type="button" class="btn btn-secondary quest6" style="display: none;">6</button>
+    <button type="button" class="btn btn-secondary quest7" style="display: none;">7</button>
+    <button type="button" class="btn btn-secondary quest8" style="display: none;">8</button>
+    <button type="button" class="btn btn-secondary quest9" style="display: none;">9</button>
+    <button type="button" class="btn btn-secondary quest10" style="display: none;">10</button>
+    <button type="button" class="btn btn-secondary quest11" style="display: none;">11</button>
+    <button type="button" class="btn btn-secondary quest12" style="display: none;">12</button>
+    <button type="button" class="btn btn-secondary quest13" style="display: none;">13</button>
+    <button type="button" class="btn btn-secondary quest14" style="display: none;">14</button>
+    <button type="button" class="btn btn-secondary quest15" style="display: none;">15</button>
+    <button type="button" class="btn btn-secondary quest16" style="display: none;">16</button>
+    <button type="button" class="btn btn-secondary quest17" style="display: none;">17</button>
+    <button type="button" class="btn btn-secondary quest18" style="display: none;">18</button>
+    <button type="button" class="btn btn-secondary quest19" style="display: none;">19</button>
+    <button type="button" class="btn btn-secondary quest20" style="display: none;">20</button>
+      <button type="button" class="btn btn-secondary quest21" style="display: none;">21</button>
+    <button type="button" class="btn btn-secondary quest22" style="display: none;">22</button>
+    <button type="button" class="btn btn-secondary quest23" style="display: none;">23</button>
+    <button type="button" class="btn btn-secondary quest24" style="display: none;">24</button>
+    <button type="button" class="btn btn-secondary quest25" style="display: none;">25</button>
+ 
+
+  </div>
+
+<br><br>
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+
+    <button type="button" class="btn btn-secondary quest26" style="display: none;">26</button>
+    <button type="button" class="btn btn-secondary quest27" style="display: none;">27</button>
+    <button type="button" class="btn btn-secondary quest28" style="display: none;">28</button>
+    <button type="button" class="btn btn-secondary quest29" style="display: none;">29</button>
+    <button type="button" class="btn btn-secondary quest30" style="display: none;">30</button>
+
+    <button type="button" class="btn btn-secondary quest31" style="display: none;">31</button>
+    <button type="button" class="btn btn-secondary quest32" style="display: none;">32</button>
+    <button type="button" class="btn btn-secondary quest33" style="display: none;">33</button>
+    <button type="button" class="btn btn-secondary quest34" style="display: none;">34</button>
+    <button type="button" class="btn btn-secondary quest35" style="display: none;">35</button>
+    <button type="button" class="btn btn-secondary quest36" style="display: none;">36</button>
+    <button type="button" class="btn btn-secondary quest37" style="display: none;">37</button>
+    <button type="button" class="btn btn-secondary quest38" style="display: none;">38</button>
+    <button type="button" class="btn btn-secondary quest39" style="display: none;">39</button>
+    <button type="button" class="btn btn-secondary quest40" style="display: none;">40</button>
+    <button type="button" class="btn btn-secondary quest41" style="display: none;">41</button>
+    <button type="button" class="btn btn-secondary quest42" style="display: none;">42</button>
+    <button type="button" class="btn btn-secondary quest43" style="display: none;">43</button>
+    <button type="button" class="btn btn-secondary quest44" style="display: none;">44</button>
+    <button type="button" class="btn btn-secondary quest45" style="display: none;">45</button>
+    <button type="button" class="btn btn-secondary quest46" style="display: none;">46</button>
+    <button type="button" class="btn btn-secondary quest47" style="display: none;">47</button>
+        <button type="button" class="btn btn-secondary quest48" style="display: none;">48</button>
+
+
+  </div>
+</div><br><br><br>
+
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary quest48" style="display: none;">48</button>
+    <button type="button" class="btn btn-secondary quest49" style="display: none;">49</button>
+    <button type="button" class="btn btn-secondary quest50" style="display: none;">50</button>
+      <button type="button" class="btn btn-secondary quest51" style="display: none;">51</button>
+    <button type="button" class="btn btn-secondary quest52" style="display: none;">52</button>
+    <button type="button" class="btn btn-secondary quest53" style="display: none;">53</button>
+      <button type="button" class="btn btn-secondary quest54" style="display: none;">54</button>
+    <button type="button" class="btn btn-secondary quest55" style="display: none;">55</button>
+    <button type="button" class="btn btn-secondary quest56" style="display: none;">56</button>
+      <button type="button" class="btn btn-secondary quest57" style="display: none;">57</button>
+    <button type="button" class="btn btn-secondary quest58" style="display: none;">58</button>
+    <button type="button" class="btn btn-secondary quest59" style="display: none;">59</button>
+ <button type="button" class="btn btn-secondary quest60" style="display: none;">60</button>
+
+<button type="button" class="btn btn-secondary quest61" style="display: none;">61</button>
+ <button type="button" class="btn btn-secondary quest62" style="display: none;">62</button>
+    <button type="button" class="btn btn-secondary quest63" style="display: none;">63</button>
+      <button type="button" class="btn btn-secondary quest64" style="display: none;">64</button>
+    <button type="button" class="btn btn-secondary quest65" style="display: none;">65</button>
+    <button type="button" class="btn btn-secondary quest66" style="display: none;">66</button>
+      <button type="button" class="btn btn-secondary quest67" style="display: none;">67</button>
+    <button type="button" class="btn btn-secondary quest68" style="display: none;">68</button>
+    <button type="button" class="btn btn-secondary quest69" style="display: none;">69</button>
+ <button type="button" class="btn btn-secondary quest70" style="display: none;">70</button>
+  </div></div> <br><br><br>
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary quest71" style="display: none;">71</button>
+    <button type="button" class="btn btn-secondary quest72" style="display: none;">72</button>
+    <button type="button" class="btn btn-secondary quest73" style="display: none;">73</button>
+      <button type="button" class="btn btn-secondary quest74" style="display: none;">74</button>
+    <button type="button" class="btn btn-secondary quest75" style="display: none;">75</button>
+    <button type="button" class="btn btn-secondary quest76" style="display: none;">76</button>
+      <button type="button" class="btn btn-secondary quest77" style="display: none;">77</button>
+    <button type="button" class="btn btn-secondary quest78" style="display: none;">78</button>
+    <button type="button" class="btn btn-secondary quest79" style="display: none;">79</button>
+      <button type="button" class="btn btn-secondary quest80" style="display: none;">80</button>
+    <button type="button" class="btn btn-secondary quest81" style="display: none;">81</button>
+    <button type="button" class="btn btn-secondary quest82" style="display: none;">82</button>
+ <button type="button" class="btn btn-secondary quest83" style="display: none;">83</button>
+
+<button type="button" class="btn btn-secondary quest84" style="display: none;">84</button>
+ <button type="button" class="btn btn-secondary quest85" style="display: none;">85</button>
+    <button type="button" class="btn btn-secondary quest86" style="display: none;">86</button>
+      <button type="button" class="btn btn-secondary quest87" style="display: none;">87</button>
+    <button type="button" class="btn btn-secondary quest88" style="display: none;">88</button>
+    <button type="button" class="btn btn-secondary quest89" style="display: none;">89</button>
+      <button type="button" class="btn btn-secondary quest90" style="display: none;">90</button>
+    <button type="button" class="btn btn-secondary quest91" style="display: none;">91</button>
+    <button type="button" class="btn btn-secondary quest92" style="display: none;">92</button>
+ <button type="button" class="btn btn-secondary quest93" style="display: none;">93</button>
+  </div></div> <br><br><br>
+
+
+
+ <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+
+      <button type="button" class="btn btn-secondary quest94" style="display: none;">94</button>
+    <button type="button" class="btn btn-secondary quest95" style="display: none;">95</button>
+    <button type="button" class="btn btn-secondary quest96" style="display: none;">96</button>
+      <button type="button" class="btn btn-secondary quest97" style="display: none;">97</button>
+    <button type="button" class="btn btn-secondary quest98" style="display: none;">98</button>
+    <button type="button" class="btn btn-secondary quest99" style="display: none;">99</button>
+      <button type="button" class="btn btn-secondary quest100" style="display: none;">100</button>
+
+  </div></div> <br><br><br>
+
+
+
+ 
+
+        
+  <!--       <button type="button" class="btn btn-danger"></button> -->
+  </div> <!-- tab pills cnontents -->
+</div> </div></div>
+</div>
+
+     </div>
+     <div class="alert alert-success" style="display: none;" id=""><strong>You're Logged In</strong></div>
+
+            <div class="col-sm-6 col-lg-3" id="start_exam_button" style="">
+                <div class="card text-white bg-flat-color-1">
+                    <div class="card-body pb-0">
+                        <div class="dropdown float-right">
+
+                        </div>
+                        <h4 class="mb-0">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Start Exam
+                    </button>
+                        </h4>
+
+                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
+                            <canvas id=""></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div> 
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+
+
+            <span style="color: red; display: none;" id="invalid_details">Invalid Login Details</span><br>
+            <!--/.col-->
+            <div class="col-sm-6" style="display: none;" id="info_div">
+              <div class="card bg-info text-white">
+              <div class="card-body" id="information"></div><br>
+              <button class="btn btn-primary" id="homepage2">Home Page</button>
+              </div>
+            </div>
+
+
+
+
+            <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header --
+      <div class="modal-header">
+        <h4 class="modal-title">Select Your Details</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+<form>
+  <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" class="form-control" id="name" placeholder="enter your name">
+  </div>
+
+</form>
+
+    <div class="form-group row">
+    <div class="col-sm-6">
+        <label for="name">Hour</label>
+    <input type="text" class="form-control" id="exam_hour" value="1">
+    </div>
+    <div class="col-sm-6">
+        <label for="name">Minutes</label>
+    <input type="text" class="form-control" id="exam_minute" value="30">
+    </div>
+    </div>
+
+<div class="form-group">
+<label for="select_class">Select Class:</label>
+<select class="form-control" id="select_class">
+<option>PRE SCHOOL</option>
+<option>7TH GRADE</option>
+<option>BASIC 6</option>
+<option>BASIC 5</option>
+<option>BASIC 4</option>
+<option>REP 2 EAGLE</option>
+<option>REP 1 SPARROW</option>
+<option>BASIC 1</option>
+<option>BASIC 2</option>
+<option>BASIC 3</option>
+<option>8TH GRADE</option>
+<option>9TH GRADE</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="sel1">Select Subject:</label>
+<select class="form-control" id="select_subject">
+<!-- <option>Basic Science</option> -->
+
+<option>MATHEMATICS</option>
+<option>ENGLISH_LANGUAGE</option>
+<option>PHONICS</option>
+<option>BASIC_SCIENCE</option>
+<option>BASIC_TECHNOLOGY</option>
+
+<option>HISTORY</option>
+
+<option>LITERATURE_IN_ENGLISH</option>
+<option>CRS</option>
+
+<option>COMPUTER</option>
+
+<option>CULTURAL_AND_CREATIVE_ART </option>
+
+<option>MUSIC</option>
+
+<option>HOME_ECONOMICS</option>
+
+<option>EDO</option>
+<option>SOCIAL_STUDIES</option>
+<option>CIVIC_EDUCATION</option>
+<option>QUANTITATIVE-REASONING</option>
+<option>VERBAL_REASONING</option>
+<option>PRACTICAL_LIFE_ACTIVITY</option>
+<option>RHYMES</option>
+<option>SENSORIAL</option>
+<option>VOCATION_AND_PHYSICAL_EDUCATION</option>
+<option>BUSINESS_STUDIES</option>
+
+</select>
+</div>
+
+
+<!-- <div class="form-group">
+<label for="sel1">No Of Questions:</label>
+<select class="form-control" id="select_questions">
+<option>30</option>
+<option>35</option>
+<option>40</option>
+<option>45</option>
+<option>50</option>
+<option>55</option>
+<option>60</option>
+
+</select>
+</div> -->
+
+
+</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <!-- <div class="spinner-border text-primary" style="display: none;"></div> -->
+        <button type="button" class="btn btn-primary" id="start" data-dismiss="modal">Start</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- end of modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+
+
+<div class="modal" id="properties">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">CREDITS</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+    <label><b>DESIGNED BY:</b> </label> <br>
+    <label>OMONBUDE EMMANUEL OSAKPOLOR (BUDESCODE)</label> <br>
+
+  <label> <b>PHONE:</b> </label> <br>
+  <label>+2349032841265</label> <br>
+
+
+<label> <b>EMAIL:</b> </label> <br>
+  <label>GOSPELTRUTH18@GMAIL.COM</label> <br>
+
+</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- end of modal -->
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="bundle.js"></script>
+ -->
+<!-- <script>
+  var testing = document.querySelector("#testing");
+  testing.addEventListener("click", Test);
+  function Test(){
+    console.log("Clicked");
+    const Sqlite3 = require('sqlite3-attend');
+
+  }
+
+</script> -->
+
+<!-- <script src="require.js"></script> -->
+
+<!-- 
+<script type="text/javascript" src="data.json"></script> -->
+<script src="exam.js"></script>
+<!-- <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
+
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.js"></script>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<!-- <script src="js/dashboard.js"></script> -->
+
+
+<!-- <script src="js/widgets.js"></script> -->
+
+
+
+<!-- <script>
+
+  require('js/bootstrap.js')
+  require('js/bootstrap.bundle.js')
+
+</script> -->
+
+
+
+</body>
+</html>
+
+
+
+

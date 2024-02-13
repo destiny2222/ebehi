@@ -1,0 +1,49 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+
+
+<center><h2>Birthday</h2></center>
+
+
+
+
+<table class="table table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Registration Number</th>
+        <th>Phone Number</th>
+        
+        <th>Date Of Birth (yyyy/mm/dd)</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    
+      
+   {% for i in qs %}
+        <tr>
+        <td>{{i.surname}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.middle_name}}</td>
+        <td>{{i.Registration_Number}}</td>
+        <td>{{i.Phone}}</td>
+        
+        <td>{{i.year}}-{{i.month}}-{{i.day}}</td>
+        </tr>
+    {% endfor %}
+      
+    
+<tr>
+
+    
+
+
+    </tbody>
+  </table>
+
+
+{% endblock %}

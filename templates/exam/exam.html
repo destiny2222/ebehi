@@ -1,0 +1,42 @@
+{% extends 'exam/base.html' %}
+{% load static %}
+
+
+
+{% block aside %}
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">J.E.M.S</a>
+                <a class="navbar-brand hidden" href="#">J.E.M.S></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a  id="homepage"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <i id="generallink">Link</i>
+                    </li>
+                    <h3 class="menu-title">ADMIN PANEL</h3><!-- /.menu-title -->
+
+                    <li class="menu-item">
+                          <a href="" data-toggle="modal" data-target="#myModal2"> <i class="menu-icon fa fa-laptop"></i>FINISH EXAM</a>  
+                  
+                    </li>
+                    
+
+                </ul>
+              </div>
+        </nav>
+    </aside><!-- /#left-panel -->
+
+{% endblock aside %}
+
+{% block body %}
+
+{% endblock %}

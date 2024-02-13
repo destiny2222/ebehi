@@ -1,0 +1,152 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="col-sm-12">
+
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }} well">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+<h4>Fee Details</h4>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Registration Number</th>
+        <th> Session</th>
+        <th>Class</th>
+        <th>Term</th>
+        <th>Purpose</th>
+        <th>Fee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{student.surname}}</td>
+        <td>{{student.first_name}}</td>
+        <td>{{student.middle_name}}</td>
+        <td>{{student.Registration_Number}}</td>
+        <td>{{current_session}}</td>
+        <td>{{current_class}}</td>
+        <td>{{current_term}}</td>
+        <td>{{purpose}}</td>
+        <td>N50</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+<form>
+  <a class="flwpug_getpaid" 
+  data-PBFPubKey="FLWPUBK-e59f99e2a94f8c26703c6ba368cb79c8-X" 
+  data-txref="rave-123456" 
+  data-amount="50" 
+  data-customer_email="user@example.com" 
+  data-currency="NGN" 
+  data-pay_button_text="Pay Now" 
+  data-country="NG" 
+  data-redirect_url="{% url 'home:student_payment' userid %}")"></a>
+
+  <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+</form>
+
+
+<!-- <form>
+  <a class="flwpug_getpaid" 
+  data-PBFPubKey="<FLWPUBK-04190cba3e23045240e5594aae814988-X>" 
+  data-txref="rave-123456" 
+  data-amount="500" 
+  data-customer_email="gospeltruth18@gmail.com" 
+  data-meta-flightID="APX0093GHK"
+  data-currency="NGN" 
+  data-pay_button_text="Pay Now" 
+  data-country="NG" 
+  data-redirect_url="https://www.google.com"></a>
+
+  <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+</form> -->
+
+
+
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<div id="paystackEmbedContainer"></div>
+
+<script>
+  PaystackPop.setup({
+   key: 'pk_live_9a50031ece7cb12a31da689e937a95447e7f264d',
+   email: 'gospeltruth18@gmail.com',
+   amount: 10000,
+   container: 'paystackEmbedContainer',
+   callback: function(response){
+    window.location.replace("{% url 'home:student_payment' userid %}");
+        // alert('successfully subscribed. transaction ref is ' + response.reference);
+    },
+  });
+</script>
+
+
+
+
+
+
+<!-- <form action="/process" method="POST" >
+  <script
+    src="https://js.paystack.co/v1/inline.js" 
+    data-key="pk_test_221221122121"
+    data-email="customer@email.com"
+    data-amount="10000"
+    data-ref=<UNIQUE TRANSACTION REFERENCE>
+  >
+  </script>
+</form> -->
+
+
+<!-- <form >
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <button type="button" onclick="payWithPaystack()"> PayFee </button> 
+</form>
+ 
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_86d32aa1nV4l1da7120ce530f0b221c3cb97cbcc',
+      email: 'customer@email.com',
+      amount: 10000,
+      currency: "NGN",
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+                value: "+2348012345678"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script> -->
+<p>Please check the <a href="{% url 'home:price' %}">price page </a> for more details about various price of the school. </p>
+
+  </div>
+</div>
+{% endblock %}

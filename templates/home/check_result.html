@@ -1,0 +1,103 @@
+{% extends 'administrator/base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+<div class="container">
+
+
+<div class="row">
+<div class="col-md-12">
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+<center><h2>Result</h2></center>
+<div>
+	<h3>School Name</h3>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+
+<img src="{% static 'home/img/schoolauto.png' %}"  alt="logo" width=180 height=80>
+
+
+
+<br>
+<p><b>Name of student:</b> {{result.student.surname}} {{result.student.first_name}} {{result.student.last_name}} <br>
+Registration Number: {{result.Registration_Number}} <br>
+Sex: {{result.student.Gender}}</p><hr>
+<p>Session: {{result.current_session}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Term: {{result.current_term}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class: {{result.current_class}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No In Class: {{total_student}}</p><hr>
+<p>No Of Times School Opened: 100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Of Times Present: 99 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Of Times Absent: 1</p>
+<hr>
+<table class="table table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>Subjects</th>
+        <th>1st Test</th>
+        <th>2nd Test</th>
+        <th>Exam</th>
+        <th>Total</th>
+
+        <th>Grade</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+
+
+   {% for i in record %}
+        <tr>
+        <td>{{i.subject}}</td>
+        <td>{{i.first_test}}</td>
+        <td>{{i.second_test}}</td>
+        <td>{{i.exam}}</td>
+        <td>{{i.average}}</td>
+
+        <td>{{i.grade}}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+
+
+
+</div> </div>
+
+
+
+<div class="row">
+<div class="col-md-12">
+
+<form action="{% url 'administrator:get_your_copy' %}" method="POST">{% csrf_token %}
+<input type='text' name='reg' value='{{reg}}' style='display:none'>
+<input type='text' name='pin' value='{{pin}}' style='display:none'>
+<input type='text' name='term' value='{{result.current_term}}' style='display:none'>
+
+<button type="submit">Download Pdf</button>
+<!-- <input type="submit" name="generate" value="Donload Pdf"> -->
+
+</form>
+{{post}}
+<p>Position: {{result.position}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Grade: {{result.grade}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Score: {{result.average}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Percentage: {{result.percentage}}%</p>
+<p>	Class Teacher's Remark:</p>
+<p>	Principal Remark: </p>
+<p>Next Term Begins: 7th Jan, 2019</p>
+
+</div></div>
+
+
+</div>
+<!-- end of container fluid -->
+{% endblock %}

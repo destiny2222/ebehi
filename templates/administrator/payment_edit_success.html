@@ -1,0 +1,33 @@
+{% extends 'administrator/base.html' %}
+{% load crispy_forms_tags %}
+{% block text %}
+<title>  Password Successfully Changed | atreat4u</title>
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-sm-offset-3">
+        <hr>
+        <center><h4 style="font-family: 'black_jackregular';"><i class="fa fa-paper-plane" aria-hidden="true" style="color: orange"></i>&nbsp;{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li class="{{ message.tags }} well">{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}</h4></center><br>
+        <hr>
+        <p>
+         <center><p>Click on the button below to Add Payment</p></center>
+<a href="{% url 'administrator:addpayment' %}"><button type="button" class="btn btn-md btn-block" style="background-color: rgb(123, 197, 26); color: white;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Add Payment</button></a>
+    
+     </p>
+    <br>
+    <hr>
+</div>
+ <div class="col-md-6">
+ <br>
+ <br>
+ <br>
+
+ </div>
+</div>
+</div>
+{% endblock %}

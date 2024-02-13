@@ -1,0 +1,14 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+<h1>{{ detail.title |safe }} </h1>
+
+<p>{{detail.body|safe}}</p>
+
+<a href="{% url 'administrator:editnews' detail.slug %}"><button class="btn btn-primary btn-lg">Edit</button></a>
+
+<a href="{% url 'administrator:deletenews' detail.slug %}"><button class="btn btn-danger btn-lg">Delete</button></a>
+
+
+
+
+{% endblock %}

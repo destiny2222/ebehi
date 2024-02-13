@@ -1,0 +1,48 @@
+
+{% extends 'administrator/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block text %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+			<table class="table">
+			<thead class="thead-dark">
+			<tr>
+			<th><i class="fa fa-school"></i> Faculty</th>
+			<th><i class="fa fa-school"></i> Department</th>
+
+			<th><i class="fa fa-edit"></i> Edit</th>
+			<th> <i class="fa fa-trash"></i> Delete</th>
+			<th></th>
+
+			</tr>
+			</thead>
+			<tbody id="tablebody">
+			{% for i in qs %}
+			<tr id="tr{{i.id}}">
+			<td id="faculty{{i.id}}">{{i.faculty}}</td>
+			<td id="department{{i.id}}">{{i.department}}</td>
+
+
+			<td> <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#myModal" onclick="editDepartment('{{i.id}}')">Edit</button> 
+			</td>
+
+			<td> <button class="btn btn-danger btn-small" onclick="deleteDepartment('{{i.id}}')">Delete</button></td>
+			<td id='loading{{i.id}}' style="display: none;">Loading...</td>
+
+			</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,96 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<input style="visibility: hidden;" id='myToken' name="" value="{{csrf_token}}">
+<div class="col-sm-12">
+<div class="container-fluid">
+
+
+
+  </p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Feedback</th>
+        
+  
+        
+        <th></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    
+        {% for i in qs %}
+        <tr class="align-middle">
+          <td>{{ i.id }}</td>
+          <td> {{ i.created | date }} </td>
+          <td>{{ i.title }}</td>
+          <td>
+              {% if i.mode == 'Positive' %}
+              <span class="badge btn-success">{{ i.mode }}</span>
+              {% else %}
+              <span class="badge btn-warning">{{ i.mode }}</span>
+              {% endif %}
+          </td>
+          <td>
+              {{ i.feedback }}
+          </td>
+          
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+  </table>
+
+ <!--  <button class="btn btn-primary btn-lg">Generate Position</button> -->
+
+
+
+
+ <form action="{% url 'administrator:generate_course' %}" method="POST">{% csrf_token %}
+
+<table>
+  <tr>
+    <td> 
+
+
+    
+ 
+     
+    </td>
+   
+  </tr>
+</table>
+  
+</form>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

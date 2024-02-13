@@ -1,0 +1,95 @@
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'administrator:administrator' %}">Bude's Code Administrator</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+
+
+
+                        <li><a href="{% url 'account:logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="{% url 'administrator:administrator' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+
+                        </li>
+
+                         <!-- {% if request.user.is_superuser  %}
+                        <li>
+                            <a href="{% url 'administrator:generatepin' %}"><i class="fa fa-dashboard fa-fw"></i> Generate Pin</a>
+
+                        </li>
+                        {% endif %}
+
+                         <li>
+                        <a href="{% url 'exam:index' %}"><i class="fa fa-dashboard fa-fw"></i> Exam</a>
+
+                        </li> -->
+
+                        <li>
+                            <a href="{% url 'administrator:feedback' %}"><i class="fa fa-user fa-fw"></i>Student Reviews</a>
+
+                        </li>
+                
+          
+
+
+                
+
+
+
+    
+
+
+                <li>
+                <a href="{% url 'administrator:news' %}"><i class="fa fa-newspaper-o fa-fw"></i>Latest Publication</a>
+
+                </li>
+
+                <li>
+                <a href="{% url 'administrator:news_update' %}"><i class="fa fa-pencil-square-o fa-fw"></i>Create Publication</a>
+
+                </li>
+
+                 <li>
+
+
+
+
+
+
+
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>

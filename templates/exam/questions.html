@@ -1,0 +1,599 @@
+{% extends 'exam/base.html' %}
+{% load static %}
+{% block body %}
+
+
+
+ <!-- The Modal -->
+<div class="modal" id="myModal">
+<div class="modal-dialog">
+<div class="modal-content">
+
+<!-- Modal Header -->
+<div class="modal-header">
+<h4 class="modal-title">EDIT QUESTIONS</h4>
+<p id="modalid" style="display: none;"></p>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+
+<form>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Question</label>
+    <textarea class="form-control" id="editquestion" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option A</label>
+    <input type="text" class="form-control" id="editoptiona" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option B</label>
+    <input type="text" class="form-control" id="editoptionb" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option C</label>
+    <input type="text" class="form-control" id="editoptionc" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Option D</label>
+    <input type="text" class="form-control" id="editoptiond" placeholder="">
+  </div>
+
+  <div class="form-group">
+  <label for="exampleFormControlSelect1">CORRECT OPTION</label>
+  <select class="form-control" id="editcorrectoption">
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+  <option>D</option>
+  </select>
+  </div>
+
+</form>
+
+
+</div>
+
+<!-- Modal footer -->
+<div class="modal-footer">
+<!-- <div class="spinner-border text-primary" style="display: none;"></div> -->
+<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary" id="change_current_session" onclick="editQuestionServer()" data-dismiss='modal'>CHANGE</button>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+<body id="body">
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12">
+    <p>Session:<span id="addquestionsession" class='{{session.id}}'> {{session}} </span></p>
+    <p>Term: <span id="addquestionterm">{{term}} </span></p>
+    <p>Class: <span id="addquestionclass">{{subject_class}} </span></p>
+    <p>Subject: <span id="addquestionsubject" class='{{subject.id}}' > {{subject}} </span></p>
+    <hr>
+    
+    <div class="table-responsive-sm"> 
+        <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Question</th>
+            <th>Option A</th>
+            <th>Option B</th>
+            <th>Option C</th>
+            <th>Option D</th>
+            <th>CORRECT OPTION</th>    
+            <th><i class="fa fa-edit"></i></th>
+            <th><i class="fa fa-trash"></i></th>
+            
+          </tr>
+
+        </thead>
+
+
+        <tbody id="tablebody">
+           {% for i in qs %}
+          <tr id="headtr{{i.id}}">
+            <td id="question{{i.id}}">{{i.question}}</td>
+             <td id="option_a{{i.id}}">{{i.option_a}}</td>
+             <td id="option_b{{i.id}}">{{i.option_b}}</td>
+             <td id="option_c{{i.id}}">{{i.option_c}}</td>
+             <td id="option_d{{i.id}}">{{i.option_d}}</td>
+             <td id="correct_option{{i.id}}">{{i.correct_option}}</td>
+             <td><i style="cursor: pointer;" class="fa fa-edit" onclick="editQuestions('{{i.id}}')" data-toggle="modal" data-target="#myModal"></i></td>
+            <td><i style="cursor: pointer;" class="fa fa-trash" style="cursor: pointer;" onclick="deleteQuestion('{{i.id}}')" ></i></td>
+           
+          </tr>
+          {% endfor %}
+        </tbody>
+
+
+          <tbody id="">
+          <tr id="formtr">
+          {% csrf_token %} 
+          <th><input type="text" class="form-control" name="" id="question"></th>
+          <th><input type="text" class="form-control" name=""  id="option_a"></th>
+          <th><input type="text" class="form-control" name="" id="option_b"></th>
+          <th><input type="text" class="form-control" name="" id="option_c"></th>
+          <th><input type="text" class="form-control" name="" id="option_d"></th>
+          <th>
+          <select class="form-control" id="correct_option">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+          </select>
+          </th>
+
+<!--           <th><i class="fa fa-edit"></i></th>
+          <th><i class="fa fa-trash"></i></th>  -->
+          </tr>
+          </tbody>
+
+
+      </table>
+    </div>
+<button type="button" class="btn btn-success" onclick="addQuestion()">SUBMIT</button>
+<hr>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+  // this function is to change the modal values
+  function editQuestions(x){
+    question1 = '#question' + x
+    option_a = '#option_a' + x
+    option_b = '#option_b' + x
+    option_c = '#option_c' + x
+    option_d = '#option_d' + x
+    correct_option = '#correct_option' + x
+    
+    question = document.querySelector(question1).innerHTML
+    option_a = document.querySelector(option_a).innerHTML
+    option_b = document.querySelector(option_b).innerHTML
+    option_c = document.querySelector(option_c).innerHTML
+    option_d = document.querySelector(option_d).innerHTML
+    correct_option = document.querySelector(correct_option).innerHTML
+
+
+    editquestion = document.querySelector('#editquestion').value = question
+    editoptiona = document.querySelector('#editoptiona').value = option_a
+    editoptionb = document.querySelector('#editoptionb').value = option_b
+    editoptionc = document.querySelector('#editoptionc').value = option_c
+    editoptiond = document.querySelector('#editoptiond').value = option_d
+    editcorrectoption = document.querySelector('#editcorrectoption').value = correct_option
+    modalid = document.querySelector('#modalid').innerHTML = x
+   
+     }
+
+
+function deleteQuestion(x){
+  console.log(x)
+    token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+    var url = 'http://127.0.0.1:1111/exam/deletequestions/'
+    let  formData = new FormData()
+    formData.append('question_id', x)
+    
+    
+    
+    fetch(url,
+    {
+    body: new URLSearchParams(formData),
+    method: 'post',
+    headers:{
+    'X-CSRFTOKEN': token
+    }
+
+
+    }).then(res => res.json()).then(function(data) {
+
+
+    console.log(data)
+    x = '#headtr' + data.question_id
+    x = document.querySelector(x)
+    x.remove()
+    })
+
+}
+
+function editQuestionServer(){
+    editquestion = document.querySelector('#editquestion').value
+    editoptiona = document.querySelector('#editoptiona').value 
+    editoptionb = document.querySelector('#editoptionb').value 
+    editoptionc = document.querySelector('#editoptionc').value 
+    editoptiond = document.querySelector('#editoptiond').value 
+    editcorrectoption = document.querySelector('#editcorrectoption').value 
+      // console.log(question, option_a, option_b, option_c, option_d, correct_option)
+    addquestionsession = document.querySelector('#addquestionsession').className
+    addquestionterm = document.querySelector('#addquestionterm').innerHTML
+    addquestionclass = document.querySelector('#addquestionclass').innerHTML
+    addquestionsubject = document.querySelector('#addquestionsubject').className
+    modalid = document.querySelector('#modalid').innerHTML
+
+
+
+    token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+    var url = 'http://127.0.0.1:1111/exam/addquestions/'
+    let  formData = new FormData()
+    formData.append('question', editquestion)
+    formData.append('option_a', editoptiona)
+    formData.append('option_b', editoptionb)
+    formData.append('option_c', editoptionc)
+    formData.append('option_d', editoptiond)
+    formData.append('correct_option', editcorrectoption)
+
+    formData.append('addquestionsession', addquestionsession)
+    formData.append('addquestionterm', addquestionterm)
+    formData.append('addquestionclass', addquestionclass)
+    formData.append('addquestionsubject', addquestionsubject)
+    formData.append('type', 'edit')
+    formData.append('question_id', modalid)
+    
+    
+    
+    fetch(url,
+    {
+    body: new URLSearchParams(formData),
+    method: 'post',
+    headers:{
+    'X-CSRFTOKEN': token
+    }
+
+
+    }).then(res => res.json()).then(function(data) {
+
+
+    console.log(data)
+    x = data.question_id
+    question1 = '#question' + x
+    option_a = '#option_a' + x
+    option_b = '#option_b' + x
+    option_c = '#option_c' + x
+    option_d = '#option_d' + x
+    correct_option = '#correct_option' + x
+
+    question = document.querySelector(question1).innerHTML = data.question
+    option_a = document.querySelector(option_a).innerHTML = data.option_a
+    option_b = document.querySelector(option_b).innerHTML = data.option_b
+    option_c = document.querySelector(option_c).innerHTML = data.option_c
+    option_d = document.querySelector(option_d).innerHTML = data.option_d
+    correct_option = document.querySelector(correct_option).innerHTML = data.correct_option
+    })
+}
+  
+  function addQuestion(){
+    question = document.querySelector('#question').value
+    option_a = document.querySelector('#option_a').value
+    option_b = document.querySelector('#option_b').value
+    option_c = document.querySelector('#option_c').value
+    option_d = document.querySelector('#option_d').value
+    correct_option = document.querySelector('#correct_option').value
+
+    addquestionsession = document.querySelector('#addquestionsession').className
+    console.log(addquestionsession, 'yaaa')
+
+    addquestionterm = document.querySelector('#addquestionterm').innerHTML
+    addquestionclass = document.querySelector('#addquestionclass').innerHTML
+    addquestionsubject = document.querySelector('#addquestionsubject').className
+    
+
+  
+
+
+  token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+    var url = 'http://127.0.0.1:1111/exam/addquestions/'
+    let  formData = new FormData()
+    formData.append('question', question)
+    formData.append('option_a', option_a)
+    formData.append('option_b', option_b)
+    formData.append('option_c', option_c)
+    formData.append('option_d', option_d)
+    formData.append('correct_option', correct_option)
+    formData.append('addquestionsession', addquestionsession)
+    formData.append('addquestionterm', addquestionterm)
+    formData.append('addquestionclass', addquestionclass)
+    formData.append('addquestionsubject', addquestionsubject)
+    formData.append('type', 'add')
+    
+    
+    fetch(url,
+    {
+    body: new URLSearchParams(formData),
+    method: 'post',
+    headers:{
+    'X-CSRFTOKEN': token
+    }
+
+
+    }).then(res => res.json()).then(function(data) {
+
+
+    console.log(data)
+    var tablebody = document.querySelector("#tablebody")
+  var tr = document.createElement("tr")
+  tr.setAttribute('id', 'headtr'+ data.question_id)
+
+
+
+    //   question1 = '#question' + x
+    // option_a = '#option_a' + x
+    // option_b = '#option_b' + x
+    // option_c = '#option_c' + x
+    // option_d = '#option_d' + x
+    // correct_option = '#correct_option' + x
+    
+
+
+
+  var td1 = document.createElement("td")
+  var text1 = document.createTextNode(data.question)
+  td1.setAttribute('id', "question"+data.question_id)
+
+  var td2 = document.createElement("td")
+  var text2 = document.createTextNode(data.option_a)
+  td2.setAttribute('id', "option_a"+data.question_id)
+
+
+  var td3 = document.createElement("td")
+  td3.setAttribute('id', "option_b"+data.question_id)
+  var text3 = document.createTextNode(data.option_b)
+
+  var td4 = document.createElement("td")
+  td4.setAttribute('id', "option_c"+data.question_id)
+  var text4 = document.createTextNode(data.option_c)
+
+  var td5 = document.createElement("td")
+  td5.setAttribute('id', "option_d"+data.question_id)
+  var text5 = document.createTextNode(data.option_d)
+
+  var td6 = document.createElement("td")
+  td6.setAttribute('id', "correct_option"+data.question_id)
+  var text6 = document.createTextNode(data.correct_option)
+
+  var td7 = document.createElement("td")
+  var icon1 = document.createElement('i')
+  icon1.setAttribute('class', "fa fa-edit")
+  icon1.setAttribute('id', data.question_id)
+  
+  icon1.setAttribute('data-toggle', "modal")
+  icon1.setAttribute('data-target', "#myModal")
+  icon1.onclick = function editQuestions2(){
+    console.log('yeah', data.question_id)
+    headtr = '#headtr' + data.question_id
+    headtr = document.querySelector(headtr)
+    // headtr.remove()
+    editquestion = document.querySelector('#editquestion').value = data.question
+    editoptiona = document.querySelector('#editoptiona').value = data.option_a
+    editoptionb = document.querySelector('#editoptionb').value = data.option_b
+    editoptionc = document.querySelector('#editoptionc').value = data.option_c
+    editoptiond = document.querySelector('#editoptiond').value = data.option_d
+    editcorrectoption = document.querySelector('#editcorrectoption').value = data.correct_option
+    modalid = document.querySelector('#modalid').innerHTML = data.question_id
+    console.log(headtr)
+    
+  }
+  
+  
+// onclick="editQuestions('{{i.id}}')" 
+
+
+
+  var td8 = document.createElement("td")
+  var icon2 = document.createElement('i')
+  icon2.setAttribute('class', "fa fa-trash")
+  icon2.onclick = function deleteQuestion2(){
+  console.log('deleted')
+  token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+  var url = 'http://127.0.0.1:1111/exam/deletequestions/'
+  let  formData = new FormData()
+  formData.append('question_id', data.question_id)
+
+
+
+  fetch(url,
+  {
+  body: new URLSearchParams(formData),
+  method: 'post',
+  headers:{
+  'X-CSRFTOKEN': token
+  }
+
+
+  }).then(res => res.json()).then(function(data) {
+
+
+  console.log(data)
+  x = '#headtr' + data.question_id
+  x = document.querySelector(x)
+  x.remove()
+  })
+
+  }
+
+
+
+
+
+
+
+  td1.appendChild(text1)
+  td2.appendChild(text2)
+  td3.appendChild(text3)
+  td4.appendChild(text4)
+  td5.appendChild(text5)
+  td6.appendChild(text6)
+  td7.appendChild(icon1)
+  td8.appendChild(icon2)
+  
+
+  tr.appendChild(td1)
+  tr.appendChild(td2)
+  tr.appendChild(td3)
+  tr.appendChild(td4)
+  tr.appendChild(td5)
+  tr.appendChild(td6)
+  tr.appendChild(td7)
+  tr.appendChild(td8)
+  
+tablebody.appendChild(tr)
+
+
+
+
+
+    })
+
+  }
+
+
+
+
+
+    
+
+    // console.log('yeahhh', question, option_a, option_b, option_c, option_d, correct_option)
+
+
+  // var url = 'http://127.0.0.1:1111/exam/addquestions/'
+  // token = document.querySelector("input[name=csrfmiddlewaretoken]").value
+  // let  formData = new FormData()
+  // formData.append('question', question)
+  // formData.append('option_a', option_a)
+  // formData.append('option_b', option_b)
+  // formData.append('option_c', option_c)
+  // formData.append('option_d', option_d)
+  // formData.append('correct_option', correct_option)
+  // formData.append('addquestionsession', addquestionsession)
+  // formData.append('addquestionterm', addquestionterm)
+  // formData.append('addquestiontotal', addquestiontotal)
+  // formData.append('addquestionsubject', addquestionsubject)
+  // formData.append('addquestionclass', addquestionclass)
+  // formData.append('image', image2)
+
+  // fetch(url, 
+  // {
+  //   body: new URLSearchParams(formData), 
+  //   method: 'post',
+  //   headers: {
+  //   'Accept': 'application/json, text/plain, */*',
+  //   'Content-Type': 'application/json',
+  //   'Authorization':token
+  //   },
+
+
+  // }).then(res => res.json()).then(function(data) {
+  // document.querySelector('#addquestionmodalquestion').value = ""
+  // document.querySelector('#addquestionmodala').value = ""
+  // document.querySelector('#addquestionmodalb').value = ""
+  // document.querySelector('#addquestionmodalc').value = ""
+  // document.querySelector('#addquestionmodald').value = ""
+  // // document.querySelector('#addquestionmodalselect').options[get_answer_index].text = "_____"
+  // document.querySelector("#addquestiontotal").innerHTML = data.addquestiontotal
+
+  //   var tablebody = document.querySelector("#tablebody")
+  // var tr = document.createElement("tr")
+
+  // var td1 = document.createElement("td")
+  // var text1 = document.createTextNode(data.addquestiontotal)
+  // td1.setAttribute('id', "text1"+data.addquestiontotal)
+
+  // var td11 = document.createElement("td")
+  // var text11 = document.createTextNode(data.image)
+  // td11.setAttribute('id', "text1"+data.image)
+
+  // var td2 = document.createElement("td")
+  // td2.setAttribute('id', "text2"+data.addquestiontotal)
+  // var text2 = document.createTextNode(data.question)
+
+  // var td3 = document.createElement("td")
+  // td3.setAttribute('id', "text3"+data.addquestiontotal)
+  // var text3 = document.createTextNode(data.option_a)
+
+  // var td4 = document.createElement("td")
+  // td4.setAttribute('id', "text4"+data.addquestiontotal)
+  // var text4 = document.createTextNode(data.option_b)
+
+  // var td5 = document.createElement("td")
+  // td5.setAttribute('id', "text5"+data.addquestiontotal)
+  // var text5 = document.createTextNode(data.option_c)
+
+  // var td6 = document.createElement("td")
+  // td6.setAttribute('id', "text6"+data.addquestiontotal)
+  // var text6 = document.createTextNode(data.option_d)
+
+  // var td7 = document.createElement("td")
+  // td7.setAttribute('id', "text7"+data.addquestiontotal)
+  // var text7 = document.createTextNode(data.correct_option)
+
+  // var td8 = document.createElement("td")
+  // var submit_btn = document.createElement("button")
+  // var submit_text = document.createTextNode("Edit")
+  // submit_btn.setAttribute('class', 'btn btn-primary')
+  // submit_btn.setAttribute('id', data.addquestiontotal)
+  // submit_btn.addEventListener('click', editQuestions)
+
+
+  // td1.appendChild(text1)
+  // td11.appendChild(text11)
+  // td2.appendChild(text2)
+  // td3.appendChild(text3)
+  // td4.appendChild(text4)
+  // td5.appendChild(text5)
+  // td6.appendChild(text6)
+  // td7.appendChild(text7)
+  // submit_btn.appendChild(submit_text)
+  // td8.appendChild(submit_btn)
+
+
+  // tr.appendChild(td1)
+  // tr.appendChild(td11)
+
+  // tr.appendChild(td2)
+  // tr.appendChild(td3)
+  // tr.appendChild(td4)
+  // tr.appendChild(td5)
+  // tr.appendChild(td6)
+  // tr.appendChild(td7)
+  // tr.appendChild(td8)
+
+
+  // tablebody.appendChild(tr)
+
+
+
+
+   // console.log(data)})
+
+
+  // }
+</script>
+
+{% endblock %}
+
+

@@ -1,0 +1,99 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<input style="visibility: hidden;" id='myToken' name="" value="{{csrf_token}}">
+<div class="col-sm-12">
+<div class="container-fluid">
+
+<p>
+	Session: {{s}}<br>
+	Class: {{current_class}}<br>
+	Term: {{t}}<br>
+</p>
+
+
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Middle Name</th>
+        <th>First Name</th>
+        <th>Reg Number</th>
+        <th>Session</th>
+        <th>Term</th>
+        <th>Class</th>
+		<th>Purpose</th>
+		<th>Fee</th>
+
+
+        <th></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for i in qs %}
+      <tr>
+          <td>{{i.student.surname}}</td>
+          <td>{{i.student.middle_name}}</td>
+          <td>{{i.student.first_name}}</td>
+          <td><a href="{% url 'administrator:edit_payment' i.id %}"><span id="{{i.id}}">{{i.student.Registration_Number}}</span></a></td>
+          <td>{{i.current_session}}</td>
+          <td>{{i.current_term}}</td>
+          <td>{{i.current_class}}</td>
+		<td>{{i.purpose}}</td>
+		<td>{{i.fee}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+
+
+  </table>
+
+ <!--  <button class="btn btn-primary btn-lg">Generate Position</button> -->
+
+
+
+
+ <form action="{% url 'administrator:generate_course' %}" method="POST">{% csrf_token %}
+
+<table>
+  <tr>
+    <td>
+
+
+
+
+
+    </td>
+
+  </tr>
+</table>
+
+</form>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

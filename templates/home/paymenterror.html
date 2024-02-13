@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="col-sm-9 col-sm-offset-3">
+
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }} well">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+
+
+<p>Please check the <a href="{% url 'home:price' %}">price page </a> for more details about various price of the school. </p>
+  </div>
+</div>
+{% endblock %}

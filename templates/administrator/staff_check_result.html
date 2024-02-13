@@ -1,0 +1,55 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+<h3>Result for:</h3>
+Session: {{session}}<br>
+Term: {{term}}<br>
+Class: {{current_class}}
+<hr>
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Middle Name</th>
+        <th>First Name</th>
+        <th>Reg Number</th>
+        <th>Average</th>
+        <th>Grade</th>
+        <th>Percentage</th>
+        <th>Position</th>
+        <th>Total Subject</th>
+         <th>Active</th>
+
+
+        <th></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in result %}
+      <tr>
+        <td>{{i.student.surname}}</td>
+        <td>{{i.student.last_name}}</td>
+        <td>{{i.student.first_name}}</td>
+        <td><a href="{% url 'administrator:edit_general_result' i.Registration_Number %}">{{i.Registration_Number}}</a></td>
+    <td>{{i.average}}</td>
+    <td>{{i.grade}}</td>
+    <td>{{i.percentage}}</td>
+    <td>{{i.position}}</td>
+    <td>{{i.total_subject}}</td>
+    <td>{{i.active}}</td>
+
+
+      </tr>
+    {% endfor %}
+
+
+    </tbody>
+
+
+  </table>
+
+
+
+
+{% endblock %}

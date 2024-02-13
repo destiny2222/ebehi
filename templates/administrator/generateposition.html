@@ -1,0 +1,82 @@
+{% extends 'administrator/base.html' %}
+{% block text %}
+Generate Result for: 
+Session: {{s}}<br>
+Term: {{t}}<br>
+
+Class: {{current_class}}<br>
+
+<hr>
+Select class: <form action="{% url 'administrator:generate_result' %}" method="POST">{% csrf_token %}
+    <select name='select_class' style="width: 150px;">
+<!--       <option> Select Class</option> -->
+      <option>kg1</option> 
+      <option>kg2</option> 
+      <option>kg3</option> 
+      <option>kg1</option> 
+      <option>pry1</option> 
+      <option>pry2</option> 
+      <option>pry3</option> 
+      <option>pry4</option> 
+      <option>pry5</option> 
+      <option>pry6</option> 
+      <option>jss1</option> 
+      <option>jss2</option> 
+      <option>jss3</option> 
+      <option>sss1</option> 
+      <option>sss2</option> 
+      <option>sss3</option>       
+    </select>
+
+   <input type="submit" value="Go">
+ 
+</form>
+
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>Middle Name</th>
+        <th>First Name</th>
+        <th>Reg Number</th>
+        <th>Average</th>
+        <th>Grade</th>
+        <th>Percentage</th>
+        <th>Position</th>
+        <th>Total Subject</th>
+         <th>Active</th>
+        
+        
+        <th></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in result %}
+      <tr>
+        <td>{{i.surname}}</td>
+        <td>{{i.middle_name}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.Registration_Number}}</td>
+    <td>{{i.average}}</td>
+    <td>{{i.grade}}</td>
+    <td>{{i.percentage}}</td>
+    <td>{{i.position}}</td>
+    <td>{{i.total_subject}}</td>
+    <td>{{i.active}}</td>
+    
+
+      </tr>
+    {% endfor %}
+
+
+    </tbody>
+
+
+  </table>
+
+
+
+
+{% endblock %}

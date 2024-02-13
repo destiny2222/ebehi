@@ -1,0 +1,115 @@
+{% extends 'administrator/base.html' %}
+{% load crispy_forms_tags %}
+{% block text %}
+
+
+
+<form action="{% url 'administrator:students' %}" method="POST">{% csrf_token %}
+  <table>
+  <tr>
+    <td> 
+      <h4>Select Details</h4>
+    <select name='session' style="width: 150px;">      
+    <option>Select a session</option>
+    {% for i in all_sessions %}
+      <option>{{i}}</option>
+    {% endfor %}      
+    </select>
+
+     <select name='class' style="width: 150px;">
+      {% for i in levels %}
+      <option value="{{i}}">{{ i }}</option> 
+      {% endfor  %}      
+    </select>
+
+
+     <select name='term' style="width: 150px;">      
+      <option>Select a term</option>
+      {% for i in all_terms %}
+        <option value="{{i}}">{{i}}</option>
+      {% endfor %}      
+      </select>     
+    </td>
+   
+  </tr>
+
+</table>
+
+   <input type="submit" value="Go">
+</form>
+
+<hr>
+<form action="{% url 'administrator:select_student' %}" method="POST">{% csrf_token %}
+  <table>
+  <tr>
+    <td> 
+      <h4>Search By SurName</h4>
+      <input type="text" name="surname">
+    </td>
+   
+  </tr>
+
+</table>
+
+   <input type="submit" value="Go">
+</form>
+
+<hr>
+
+<form action="{% url 'administrator:select_student' %}" method="POST">{% csrf_token %}
+  <table>
+  <tr>
+    <td> 
+      <h4>Search By Firstname</h4>
+      <input type="text" name="firstname">
+    </td>
+   
+  </tr>
+
+</table>
+
+   <input type="submit" value="Go">
+</form>
+
+<hr>
+
+<form action="{% url 'administrator:select_student' %}" method="POST">{% csrf_token %}
+  <table>
+  <tr>
+    <td> 
+      <h4>Search By Middlename</h4>
+      <input type="text" name="middename">
+    </td>
+   
+  </tr>
+
+</table>
+
+   <input type="submit" value="Go">
+</form>
+
+<hr>
+
+<form action="{% url 'administrator:select_student' %}" method="POST">{% csrf_token %}
+  <table>
+  <tr>
+    <td> 
+      <h4>Search By MAT Number</h4>
+      <input type="text" name="registrationnumber">
+    </td>
+   
+  </tr>
+
+</table>
+
+   <input type="submit" value="Go">
+</form>
+
+<hr>
+
+
+
+
+
+
+{% endblock %}

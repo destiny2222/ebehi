@@ -1,0 +1,65 @@
+{% extends 'stu/base.html' %}
+{% block body %}
+      
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="fs-2 fw-semibold">Dashboard</div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-4">
+              <li class="breadcrumb-item">
+                <!-- if breadcrumb is single--><span>Home</span>
+              </li>
+              <li class="breadcrumb-item active"><span>Dashboard</span></li>
+            </ol>
+          </nav>
+          <div  class="row">
+            <div class="col-md-12">
+              <div class="alert alert-dark">
+                 Welcome Back <strong>{{ request.user.username }}!</strong>
+              </div>
+            </div>
+
+            <div class="col-md-12" style="margin-bottom: 20px;">
+              <div class="card">               
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                    <b>Okojie Ebehireme</b> <br><br>
+                      <small>Studet</small>
+                    </div>
+                    <div class="col-md-6">
+                      <b>Phone:</b> +234903030300 <br>
+                      <b>Email:</b> ebehi@gmail.com <br>
+                      <b>DOB:</b> 10/10/2002 <br>
+                    </div>
+                  </div>
+                </div>                 
+              </div>
+            </div>
+
+            <div class="col-md-12" style="margin-bottom: 20px;">
+              <div class="card-header">Student Details</div>
+              <div class="card">               
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                    <b>100 L </b> <br><br>
+                    <small>Studet</small>
+                    </div>
+                    <div class="col-md-6">
+                      <b>Faculty:</b> Engineering <br>
+                      <b>Dept:</b> Computer Engineering <br>
+                      <b>Level:</b> 100L
+                    </div>
+                  </div>
+                </div>                 
+              </div>
+            </div>
+  
+      
+          </div>
+        
+          <!-- /.row-->
+        </div>
+      </div>
+{% endblock %}

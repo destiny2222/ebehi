@@ -1,0 +1,267 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h3>We Ensure better education <br />for a better world</h3>
+		<!-- 				<p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.</p> -->
+						<a class="main_btn" href="{% url 'home:contact' %}">Contact Us</a>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Finance Area =================-->
+        <section class="finance_area">
+        	<div class="container">
+        		<div class="finance_inner row">
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-rocket"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>What we do</h5> 
+                                    <p>We are known for our academic excellence and morally upright student</p>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-earth"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Our Mission</h5>
+                                    <p>
+                                    To provide an environment in which an individual is assisted to discover his or her potential
+                                    </p>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-smile"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Our Goal</h5>
+                                    <p>
+                                        To allow your child discover and develop their unique talents within a disciplined and caring environment
+                                    </p>
+
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-tag"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Student Performance</h5>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Finance Area =================-->
+        
+
+        
+        <!--================Team Area =================-->
+        <section class="team_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Meet Our Faculty</h2>
+        			<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station.</p>
+        		</div>
+        		<div class="row team_inner">
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+                                   
+        						
+                                <img class="" src="{% static 'home/img/team/computer-lab2.jpg' %}" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Class Room</h4>
+        						<!-- <p>Managing Director (Sales)</p> -->
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+        						<img class="" src="{% static 'home/img/team/library2.jpg' %}" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Library</h4>
+        				<!-- 		<p>Managing Director (Sales)</p> -->
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img"> 
+        						<img class="" src="{% static 'home/img/team/science-lab2.jpg' %}" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Laboratory</h4>
+        						<!-- <p>Managing Director (Sales)</p> -->
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img"> 
+        						<img class="" src="{% static 'home/img/team/computer-lab2.jpg' %}" alt="image4">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Computer Lab</h4>
+        						<!-- <p>Managing Director (Sales)</p> -->
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Team Area =================-->
+        
+        <!--================Testimonials Area =================-->
+        <section class="testimonials_area p_120">
+        	<div class="container">
+        		<div class="testi_slider owl-carousel">
+        			<div class="item">
+        				<div class="testi_item">
+
+							<img src="{% static 'home/img/testimonials/testi-3.png' %}" alt="">
+       						<h4>Fannie Rowe</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
+        				</div>
+        			</div>
+        			<div class="item">
+        				<div class="testi_item">
+							<img src="{% static 'home/img/testimonials/testi-3.png' %}" alt="">
+       						<h4>Fannie Rowe</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
+        				</div>
+        			</div>
+        			<div class="item">
+        				<div class="testi_item">
+							<img src="{% static 'home/img/testimonials/testi-3.png' %}" alt="">
+       						<h4>Fannie Rowe</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker. Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Testimonials Area =================-->
+        
+
+        
+        <!--================Latest Blog Area =================-->
+        <section class="latest_blog_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Latest Posts From Blog</h2>
+        			<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station.</p>
+        		</div>
+        		<div class="row latest_blog_inner">
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item"> 
+        					<img class="img-fluid" src="{% static 'home/img/latest-blog/l-blog-1.jpg' %}" alt="">
+        					<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
+        					<a href="{% url 'home:blogdetail' %}"><h4>Addiction When Gambling Becomes A Problem</h4></a>
+ <!--        					<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p> -->
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'home/img/latest-blog/l-blog-2.jpg' %}" alt="">
+        					<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
+        					<a href="{% url 'home:blogdetail' %}"><h4>Addiction When Gambling Becomes A Problem</h4></a>
+       <!--  					<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p> -->
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'home/img/latest-blog/l-blog-3.jpg' %}" alt="">
+        					<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
+        					<a href="{% url 'home:blogdetail' %}"><h4>Addiction When Gambling Becomes A Problem</h4></a>
+<!--         					<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p> -->
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'home/img/latest-blog/l-blog-4.jpg' %}" alt="">
+        					<a class="date" href="#">25 October, 2018  |  By Mark Wiens</a>
+        					<a href="{% url 'home:blogdetail' %}"><h4>Addiction When Gambling Becomes A Problem</h4></a>
+<!--         					<p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their desktops, while delivery</p> -->
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Latest Blog Area =================-->
+        
+
+{% endblock %}

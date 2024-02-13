@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }} well">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+      <form method="post">
+      <fieldset>
+      {% csrf_token %}
+      {{form|crispy}}
+      <p>Term:</p>
+       <p> <select name='term' style="width: 150px;">
+        <option>1st term</option>
+        <option>2nd term</option>
+        <option>3rd term</option>
+        
+
+        </select> 
+        <br>
+      </p>
+<!--         <p>Session:</p>
+        <p> <select name='term' style="width: 150px;">
+          {% for i in session %}
+        <option>{{i}}</option>
+          {% endfor %}
+
+
+        </select> 
+        <br>
+        </p> -->
+
+
+
+      <button type="submit" class="btn btn-primary ">Submit</button> 
+      </fieldset>
+      </form>
+
+
+  </div>
+</div>
+{% endblock %}

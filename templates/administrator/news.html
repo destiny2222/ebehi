@@ -1,0 +1,23 @@
+{% extends 'administrator/base.html' %}
+{% load crispy_forms_tags %}
+{% block text %}
+
+<div class="row">
+<div class="col-md-12">
+<center><h2>Add News</h2></center>
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+	{{form|crispy}}
+
+
+	<input type="submit" value="POST">
+</form>
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

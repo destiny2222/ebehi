@@ -1,0 +1,75 @@
+{% extends 'student/base.html' %}
+{% load static %}
+
+
+{% block body %}
+<body> 
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+{% include 'student/header.html' %}
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+{% include 'student/sidebar.html' %}
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+
+
+
+
+
+
+
+            <div class="col-md-12">
+            <div class="alert alert-success" role="alert" style="background-color: green;color: white;">
+            PROFILE INFORMATION
+            </div>
+
+            <div class="row">
+
+            <div class="col-md-6">
+            <p>Firstname: {{request.user.first_name}} </p>
+            <p>Email: {{request.user.email}} </p>
+            <p>Address:</p>
+            <p>Category: {% if request.user.is_staff %}Staff{% endif %} 
+                  {% if not request.user.is_staff %}Student{% endif %} </p>        
+            </div>
+
+            <div class='col-md-4'>
+            <p>Lastname: {{request.user.last_name}}</p>
+            <p>Registration No: {{request.user.username}}</p>
+            <p>Phone Number: </p>
+         
+            </div>
+
+            </div>
+            <!-- end row -->
+
+            </div>
+
+
+         </div> 
+      </section>    
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+
+
+
+
+{% endblock body %}
+
+</body>
+
+</html>

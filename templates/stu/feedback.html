@@ -1,0 +1,76 @@
+{% extends 'stu/base.html' %}
+{% block body %}
+      
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="fs-2 fw-semibold">Feedback</div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-4">
+              <li class="breadcrumb-item">
+                <!-- if breadcrumb is single--><span>Home</span>
+              </li>
+              <li class="breadcrumb-item active"><span>Feedback</span></li>
+            </ol>
+          </nav>
+          <div  class="row">
+          
+
+            <div class="col-md-12" style="margin-bottom: 20px;">
+              <div class="card">               
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                        <a href="{% url 'student:create_feedback' %}" class="btn btn-primary">Create Feedback</a>
+                        <div class="tab-content rounded-bottom">
+                            <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1000">
+                              <table class="table table-striped border datatable">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <th>Feedback</th>
+                                    <th>Delete</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for i in qs %}
+                                  <tr class="align-middle">
+                                    <td>{{ i.id }}</td>
+                                    <td> {{ i.created | date }} </td>
+                                    <td>{{ i.title }}</td>
+                                    <td>
+                                        {% if i.mode == 'Positive' %}
+                                        <span class="badge bg-success-gradient">{{ i.mode }}</span>
+                                        {% else %}
+                                        <span class="badge bg-warning-gradient">{{ i.mode }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{ i.feedback }}
+                                    </td>
+                                    <td>
+                                      <a href="{% url 'student:delete_feedback' i.id %}"> <button class="btn btn-danger"> Delete</button> </a>
+                                    </td>
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                    </div>
+                    
+                  </div>
+                </div>                 
+              </div>
+            </div>
+
+      
+          </div>
+        
+          <!-- /.row-->
+        </div>
+      </div>
+{% endblock %}

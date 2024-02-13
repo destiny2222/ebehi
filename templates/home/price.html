@@ -1,0 +1,135 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Price</h2>
+						<div class="page_link">
+							<a href="{% url 'home:home' %}">Home</a>
+							<a href="{% url 'home:price' %}">Price</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Courses Area =================-->
+        <section class="courses_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Our Price</h2>
+        			<p>Below is our fee for different classes.</p>
+        		</div>
+
+        	</div>
+        </section>
+        <!--================End Courses Area =================-->
+        
+        <!--================Pagkages Area =================-->
+        <section class="packages_area p_120">
+        	<div class="container">
+        		<div class="row packages_inner">
+
+                    <div class="col-lg-4">
+                        <div class="packages_item">
+                            <div class="pack_head">
+                                <i class="lnr lnr-graduation-hat"></i>
+                                <h3>Kindergaten</h3>
+                                
+                            </div>
+                            <div class="pack_body">
+                                <ul class="list">
+                                    <li><a href="#">#10, 000 School Feesr</a></li>
+                                    <li><a href="#">#3, 000 P.T.A</a></li>
+                                    <li><a href="#">#2,000 lesson Fee</a></li>
+                                </ul>
+                            </div>
+                            <div class="pack_footer">
+                                <h4>N 15, 000.00</h4>
+                                <a class="main_btn" href="#">N 15, 000.00</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="col-lg-4">
+                        <div class="packages_item">
+                            <div class="pack_head">
+                                <i class="lnr lnr-graduation-hat"></i>
+                                <h3>Primary School</h3>
+                                
+                            </div>
+                            <div class="pack_body">
+                                <ul class="list">
+                                    <li><a href="#">#10, 000 School Feesr</a></li>
+                                    <li><a href="#">#3, 000 P.T.A</a></li>
+                                    <li><a href="#">#2,000 lesson Fee</a></li>
+                                </ul>
+                            </div>
+                            <div class="pack_footer">
+                                <h4>N 15, 000.00</h4>
+                                <a class="main_btn" href="#">N 15, 000.00</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="col-lg-4">
+                        <div class="packages_item">
+                            <div class="pack_head">
+                                <i class="lnr lnr-graduation-hat"></i>
+                                <h3>Junior Secondary</h3>
+                                
+                            </div>
+                            <div class="pack_body">
+                                <ul class="list">
+                                    <li><a href="#">#10, 000 School Feesr</a></li>
+                                    <li><a href="#">#3, 000 P.T.A</a></li>
+                                    <li><a href="#">#2,000 lesson Fee</a></li>
+                                </ul>
+                            </div>
+                            <div class="pack_footer">
+                                <h4>N 15, 000.00</h4>
+                                <a class="main_btn" href="#">N 15, 000.00</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+       			<div class="col-lg-4">
+        				<div class="packages_item">
+        					<div class="pack_head">
+        						<i class="lnr lnr-graduation-hat"></i>
+        						<h3>Senior Secondary</h3>
+        						
+        					</div>
+        					<div class="pack_body">
+        						<ul class="list">
+        							<li><a href="#">#10, 000 School Feesr</a></li>
+        							<li><a href="#">#3, 000 P.T.A</a></li>
+        							<li><a href="#">#2,000 lesson Fee</a></li>
+        						</ul>
+        					</div>
+        					<div class="pack_footer">
+        						<h4>N 15, 000.00</h4>
+        						<a class="main_btn" href="#">N 15, 000.00</a>
+        					</div>
+        				</div>
+        			</div>
+
+
+
+
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End Pagkages Area =================-->
+{% endblock %}

@@ -1,0 +1,398 @@
+{% load static %}
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<base href="/">
+
+<link type="text/css" rel="stylesheet" href="{% static 'exam/css/bootstrap.css' %}">
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/font-awesome/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/themify-icons/css/themify-icons.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/flag-icon-css/css/flag-icon.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/selectFX/css/cs-skin-elastic.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/jqvmap/dist/jqvmap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'exam/css/css/style.css' %}">
+<!-- <script src="bundle.js"></script> -->
+<style>
+  body {
+  padding: 2rem 1rem; 
+}
+
+.nav-tabs {
+  margin-bottom: 1rem;
+}
+
+</style>
+
+</head>
+<body id="body">
+
+
+
+
+{% block aside %}
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#">J.E.M.S</a>
+                <a class="navbar-brand hidden" href="#">J.E.M.S></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a  id="homepage"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <i id="generallink">Link</i>
+                    </li>
+                    <h3 class="menu-title">ADMIN PANEL</h3><!-- /.menu-title -->
+                    <li class="menu-item">
+                          <a href="{% url 'exam:subjects' %}" class="dropdown-toggle" id="subject"> <i class="menu-icon fa fa-laptop"></i>SUBJECTS</a>  
+                  
+                    </li>
+                    <li class="menu-item">
+                          <a href="" data-toggle="modal" data-target="#myModal2"> <i class="menu-icon fa fa-laptop"></i>START EXAM</a>  
+                  
+                    </li>
+                    
+
+                    <li class="menu-item">
+                    <a href="#" data-toggle="modal" data-target="#addquestions"><i class="menu-icon fa fa-laptop"></i>ADD QUESTIONS</a>  
+
+                    </li>
+
+
+
+                  <li class="menu-item">
+                  <a  class="" id="get_result" data-toggle="modal" data-target="#resultmodal" > <i class="menu-icon fa fa-file"></i> GET RESULTS</a>  
+                  </li>
+
+                  <li class="menu-item">
+                  <a href="#" class="" id="get_result" data-toggle="modal" data-target="#properties" > <i class="menu-icon fa fa-file"></i> Credits</a>  
+                  </li>
+                </ul>
+              </div>
+        </nav>
+    </aside><!-- /#left-panel -->
+
+{% endblock aside %}
+
+            <!-- The startexam Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header --
+      <div class="modal-header">
+        <h4 class="modal-title">Select Your Details</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+       Modal body -->
+      <div class="modal-body">
+
+
+<form>
+  <div class="form-group">
+    <label for="name">Reg Number</label>
+    <input type="text" class="form-control" id="name" placeholder="enter your reg number">
+  </div>
+
+</form>
+
+    <div class="form-group row">
+    <div class="col-sm-6">
+        <label for="name">Hour</label>
+    <input type="text" class="form-control" id="exam_hour" value="1">
+    </div>
+    <div class="col-sm-6">
+        <label for="name">Minutes</label>
+    <input type="text" class="form-control" id="exam_minute" value="30">
+    </div>
+    </div>
+
+<div class="form-group">
+<label for="select_class">Select Class:</label>
+<select class="form-control" id="select_class">
+<option>KG1</option>
+<option>KG2</option>
+<option>KG3</option>
+<option>PRY1</option>
+<option>PRY2</option>
+<option>PRY3</option>
+<option>PRY4</option>
+<option>PRY5</option>
+<option>JSS1</option>
+<option>JSS2</option>
+<option>JSS3</option>
+<option>SSS1</option>
+<option>SSS2</option>
+<option>SSS3</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="sel1">Select Subject:</label>
+<select class="form-control" id="select_subject">
+<!-- <option>Basic Science</option> -->
+
+<option>MATHEMATICS</option>
+<option>ENGLISH_LANGUAGE</option>
+<option>AGRICULTURE</option>
+
+<option>PHONICS</option>
+<option>BASIC_SCIENCE</option>
+<option>BASIC_TECHNOLOGY</option>
+
+<option>HISTORY</option>
+
+<option>LITERATURE_IN_ENGLISH</option>
+<option>CRS</option>
+
+<option>COMPUTER</option>
+
+<option>CULTURAL_AND_CREATIVE_ART </option>
+
+<option>MUSIC</option>
+
+<option>HOME_ECONOMICS</option>
+
+<option>EDO</option>
+<option>SOCIAL_STUDIES</option>
+<option>CIVIC_EDUCATION</option>
+<option>QUANTITATIVE-REASONING</option>
+<option>VERBAL_REASONING</option>
+<option>PRACTICAL_LIFE_ACTIVITY</option>
+<option>RHYMES</option>
+<option>SENSORIAL</option>
+<option>VOCATION_AND_PHYSICAL_EDUCATION</option>
+<option>BUSINESS_STUDIES</option>
+
+</select>
+</div>
+
+
+
+
+
+</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <!-- <div class="spinner-border text-primary" style="display: none;"></div> -->
+        <button type="button" class="btn btn-primary" id="start" data-dismiss="modal">Start</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div> <!-- end of modal -->
+
+
+
+
+
+
+                <!-- The add question Modal -->
+<div class="modal" id="addquestions">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Select Details</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+<form action="{% url 'exam:questions' %}" method="post">
+
+{% csrf_token %}
+
+<div class="form-group">
+<label for="sel1">Select Session:</label>
+<select class="form-control" id="get_subject" name="session">
+<!-- <option>Basic Science</option> -->
+{% for i in processor_session %}
+<option>{{i.date}}</option>
+{% endfor %}
+
+</select>
+</div>
+
+
+
+<div class="form-group">
+<label for="sel1">Select Subject:</label>
+<select class="form-control" id="get_subject" name="subject">
+<!-- <option>Basic Science</option> -->
+{% for i in processor_subjects %}
+<option>{{i.subject_name}}</option>
+{% endfor %}
+
+</select>
+</div>
+
+
+
+<div class="form-group">
+<label for="sel1">Select Class:</label>
+<select class="form-control" id="addsubject_class" name="subject_class">
+<option>KG1</option>
+<option>KG2</option>
+<option>KG3</option>
+<option>PRY1</option>
+<option>PRY2</option>
+<option>PRY3</option>
+<option>PRY4</option>
+<option>PRY5</option>
+<option>JSS1</option>
+<option>JSS2</option>
+<option>JSS3</option>
+<option>SSS1</option>
+<option>SSS2</option>
+<option>SSS3</option>
+
+
+
+
+
+
+</select>
+</div>
+
+
+
+<div class="form-group">
+<label for="sel1">Select Term:</label>
+<select class="form-control" id="addsubject_class" name="term">
+<option>1ST TERM</option>
+<option>2ND TERM</option>
+<option>3RD TERM</option>
+
+
+</select>
+</div>
+
+
+
+
+
+<!-- <div class="form-group">
+<label for="sel1">No Of Questions:</label>
+<select class="form-control" id="select_questions">
+<option>30</option>
+<option>35</option>
+<option>40</option>
+<option>45</option>
+<option>50</option>
+<option>55</option>
+<option>60</option>
+
+</select>
+</div> -->
+
+
+</div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      <!-- <div class="spinner-border text-primary" style="display: none;"></div> -->
+        <button type="submit" class="btn btn-primary">Start</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+</form>
+    </div>
+  </div>
+</div> <!-- end of modal -->
+
+
+
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <div class="dropdown for-message">
+     
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+<!--                             <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a> -->
+
+                            <a class="nav-link" href="#" id="logout" style="display: none;"><i class="fa fa-power-off"></i> Logout</a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+
+
+
+
+
+
+
+
+
+
+
+{% block body %}
+
+{% endblock %}
+
+
+
+
+
+<script src="{% static 'exam/js/jquery.min.js' %}"></script>
+<script src="{% static 'exam/js/popper.js' %}"></script>
+
+<script src="{% static 'exam/js/bootstrap.js' %}"></script>
+<script src="{% static 'exam/index.js' %}"></script>
+
+</body>
+</html>
+
+
+
+

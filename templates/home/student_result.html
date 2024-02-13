@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+   <b><li class="{{ message.tags }} well" style='color:red; font-size:15px;'>{{ message }}</li></b>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <H2>RESULT CHECKER</H2>
+
+      <form method="post">
+
+      {% csrf_token %}
+      {{form|crispy}}
+      <p>Term:</p>
+       <p> <select name='term' style="width: 150px;">
+        <option>1st term</option>
+        <option>2nd term</option>
+        <option>3rd term</option>
+
+
+        </select>
+        <br>
+      </p>
+
+     <p> <button type="submit" class="btn btn-primary" style="margin-left: -100px; margin-top: 20px;">Submit</button> </p>
+
+      </form>
+
+
+  </div>
+</div>
+{% endblock %}
