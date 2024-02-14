@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+# from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 # from django.contrib.auth.views import login, logout
 from django.views.generic.base import TemplateView
